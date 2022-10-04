@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Task manager</title>
+</head>
+<body>
+    <form method="POST" action="create/">
+        {% csrf_token %}
+        <p>
+            <label>Введите название задачи</label><br>
+            <input type="text" name="name" />
+        </p>
+        <p>
+            <label>Введите описание задачи</label><br>
+            <input type="text" name="description" />
+        </p>
+        <input type="submit" value="Сохранить" >
+    </form>
+    {% if tasks.count > 0 %}
+    <h2>Список задач</h2>
+    <table>
+        <thead><th>Id</th><th>Название</th><th>Описание</th><th>Котик</th></thead>
+        {% for task in tasks %}
+        <tr>
+            <td>{{ task.id }}</td>
+            <td>{{ task.name }}</td>
+            <td>{{ task.description }}</td>
+            <td><img src={{ task.cat_field }}</td>
+            <td><a href="edit/{{task.id}}">Изменить</a> | <a href="delete/{{task.id}}">Удалить</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% endif %}
+</body>
+</html>
