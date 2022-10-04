@@ -4,22 +4,28 @@
     <meta charset="utf-8" />
     <title>Task manager</title>
 </head>
-<body>
+<body style="background-image: url('https://kartinkin.net/uploads/posts/2021-07/1625251611_5-kartinkin-com-p-koshachii-fon-krasivie-foni-5.png')" >
+<center>
     <form method="POST" action="create/">
         {% csrf_token %}
         <p>
-            <label>Введите название задачи</label><br>
+            <label style="background-color: darkgray">Введите название задачи</label><br>
             <input type="text" name="name" />
         </p>
         <p>
-            <label>Введите описание задачи</label><br>
+            <label style="background-color: darkgray">Введите описание задачи</label><br>
             <input type="text" name="description" />
         </p>
-        <input type="submit" value="Сохранить" >
+        <input type="submit" value="Сохранить" style="" >
     </form>
     {% if tasks.count > 0 %}
-    <h2>Список задач</h2>
-    <table>
+    <h2 style="font-size:30px;
+color: white;
+text-shadow: 1px 0 1px #000,
+0 1px 1px #000,
+-1px 0 1px #000,
+0 -1px 1px #000;">Список задач</h2>
+    <table style="background-color: darkgray">
         <thead><th>Id</th><th>Название</th><th>Описание</th><th>Котик</th></thead>
         {% for task in tasks %}
         <tr>
@@ -32,5 +38,6 @@
         {% endfor %}
     </table>
     {% endif %}
+</center>
 </body>
 </html>
